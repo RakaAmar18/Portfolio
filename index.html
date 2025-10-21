@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Raka Amar Taru Lintang</title>
+  <title>Portofolio — Raka Amar Taru Lintang</title>
   <meta name="description" content="Portofolio sederhana — proyek, skill, kontak." />
 
   <style>
@@ -116,8 +116,7 @@
       gap:16px;
       margin-bottom:48px;
       padding:20px 24px;
-      background:rgba(11, 18, 32, 0.6);
-      backdrop-filter: blur(20px) saturate(180%);
+      background:rgba(11, 18, 32, 0.9);
       border-radius:var(--radius);
       border:1px solid rgba(6, 182, 212, 0.1);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -274,29 +273,48 @@
     .hamburger {
       display: none;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       cursor: pointer;
       z-index: 1001;
-      padding: 8px;
+      padding: 12px;
       border-radius: 8px;
       transition: all 0.3s ease;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .hamburger:hover {
-      background: rgba(6, 182, 212, 0.1);
+      background: rgba(6, 182, 212, 0.2);
+      border-color: rgba(6, 182, 212, 0.4);
+    }
+
+    .hamburger:active {
+      transform: scale(0.95);
+      background: rgba(6, 182, 212, 0.3);
     }
 
     .hamburger span {
-      width: 26px;
+      width: 30px;
       height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+      background: #06b6d4;
       border-radius: 3px;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 2px 8px rgba(6, 182, 212, 0.4);
+      pointer-events: none;
+    }
+
+    .hamburger.active {
+      background: rgba(6, 182, 212, 0.2);
     }
 
     .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(8px, 8px);
+      transform: rotate(45deg) translate(10px, 10px);
+      background: #06b6d4;
     }
 
     .hamburger.active span:nth-child(2) {
@@ -305,7 +323,8 @@
     }
 
     .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(8px, -8px);
+      transform: rotate(-45deg) translate(10px, -10px);
+      background: #06b6d4;
     }
 
     /* Mobile Navigation */
@@ -316,10 +335,9 @@
       right: -100%;
       width: 280px;
       height: 100vh;
-      background: rgba(11, 18, 32, 0.98);
-      backdrop-filter: blur(30px) saturate(180%);
-      border-left: 1px solid rgba(6, 182, 212, 0.2);
-      box-shadow: -10px 0 50px rgba(0, 0, 0, 0.5);
+      background: #1e293b;
+      border-left: 2px solid #06b6d4;
+      box-shadow: -10px 0 50px rgba(0, 0, 0, 0.8);
       z-index: 1000;
       padding: 100px 30px 30px;
       transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -332,20 +350,23 @@
 
     .mobile-nav a {
       display: block;
-      color: var(--muted);
+      color: #ffffff;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
-      padding: 16px 20px;
-      margin-bottom: 8px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
       border-radius: 12px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      background: rgba(6, 182, 212, 0.05);
-      border: 1px solid rgba(6, 182, 212, 0.1);
+      background: rgba(6, 182, 212, 0.1);
+      border: 2px solid rgba(6, 182, 212, 0.3);
       position: relative;
       overflow: hidden;
       opacity: 0;
       transform: translateX(50px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .mobile-nav.active a {
@@ -368,18 +389,24 @@
       position: absolute;
       left: 0;
       top: 0;
-      width: 4px;
+      width: 5px;
       height: 100%;
-      background: linear-gradient(180deg, var(--accent), var(--accent-purple));
+      background: linear-gradient(180deg, #06b6d4, #7c3aed);
       transform: scaleY(0);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.8);
     }
 
-    .mobile-nav a:hover {
-      color: var(--accent);
-      background: rgba(6, 182, 212, 0.15);
-      transform: translateX(10px);
-      border-color: rgba(6, 182, 212, 0.3);
+    .mobile-nav a:active {
+      transform: scale(0.98);
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a:active {
+      color: #ffffff;
+      background: rgba(6, 182, 212, 0.25);
+      border-color: #06b6d4;
+      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.5);
     }
 
     .mobile-nav a:hover::before {
@@ -394,15 +421,18 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.85);
       z-index: 999;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      pointer-events: none;
     }
 
     .mobile-overlay.active {
       opacity: 1;
+      visibility: visible;
+      pointer-events: all;
     }
 
     .hero{
@@ -414,8 +444,7 @@
     
     /* Enhanced Card Styles */
     .card{
-      background:rgba(11, 18, 32, 0.7);
-      backdrop-filter: blur(20px) saturate(180%);
+      background:rgba(11, 18, 32, 0.9);
       padding:28px;
       border-radius:var(--radius);
       box-shadow:0 8px 32px rgba(2,6,23,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
@@ -476,7 +505,7 @@
 
     .intro > p{
       color:var(--muted);
-      margin:0 0 24px 0;
+      margin:0 0 32px 0;
       font-size:16px;
       line-height:1.7;
     }
@@ -485,7 +514,6 @@
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin-bottom:24px;
     }
     .btn{
       display:inline-flex;
@@ -721,8 +749,7 @@
       text-decoration: none;
       color: inherit;
       padding:28px;
-      background:rgba(11, 18, 32, 0.7);
-      backdrop-filter: blur(20px) saturate(180%);
+      background:rgba(11, 18, 32, 0.9);
       border-radius:var(--radius);
       transition:all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       cursor:pointer;
@@ -880,6 +907,43 @@
       transform: translateY(-2px);
     }
 
+    #contact button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 8px;
+      animation: slideIn 0.3s ease;
+    }
+
+    .form-message.success {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+    }
+
+    .form-message.error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     footer{
       margin-top:80px;
       padding:32px 0;
@@ -990,7 +1054,7 @@
       }
       
       .intro h2{font-size:28px; margin-bottom:12px}
-      .intro > p{font-size:14px; line-height:1.6}
+      .intro > p{font-size:14px; line-height:1.6; margin-bottom:28px}
       
       .section-title{font-size:24px;margin-bottom:28px}
       
@@ -1062,6 +1126,11 @@
 
       .socials {
         flex-direction: column;
+        gap: 10px;
+      }
+
+      .intro > p {
+        margin-bottom: 24px;
       }
 
       .avatar{height:200px}
@@ -1117,12 +1186,6 @@
           <p>Saya membuat aplikasi web dan antarmuka pengguna yang rapi, cepat, dan mudah digunakan. Berikut beberapa proyek dan kemampuan saya.</p>
 
           <div class="socials">
-            <a class="btn" href="#projects">
-              <span>Lihat Proyek</span>
-            </a>
-            <a class="btn" href="#contact">
-              <span>Hubungi</span>
-            </a>
             <a class="btn" href="cv.html" target="_blank">
               <span>📄 Lihat CV</span>
             </a>
@@ -1190,13 +1253,14 @@
       <div class="card">
         <h2 class="section-title">Kontak</h2>
         <p>Ingin bekerja sama atau menanyakan sesuatu? Kirim pesan lewat form ini:</p>
-        <form id="contactForm" onsubmit="handleSubmit(event)">
+        <form id="contactForm">
           <input id="nama" placeholder="Nama" required />
           <input id="email" type="email" placeholder="Email" required />
           <textarea id="pesan" placeholder="Pesan" required></textarea>
           <button class="btn" type="submit">
             <span>Kirim Pesan</span>
           </button>
+          <div id="formMessage"></div>
         </form>
       </div>
     </section>
@@ -1206,36 +1270,74 @@
     </footer>
   </div>
 
-  <div class="scroll-indicator" id="scrollToTop" onclick="scrollToTop()">
+  <div class="scroll-indicator" id="scrollToTop">
     <span>↑</span>
   </div>
 
   <script>
-    // Hamburger Menu Toggle
+    // State management
+    let isMenuOpen = false;
+
+    // Hamburger Menu Toggle - FIXED
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
     const mobileOverlay = document.getElementById('mobileOverlay');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
 
-    function toggleMobileMenu() {
-      hamburger.classList.toggle('active');
-      mobileNav.classList.toggle('active');
-      mobileOverlay.classList.toggle('active');
-      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    function closeMobileMenu() {
+      isMenuOpen = false;
+      hamburger.classList.remove('active');
+      mobileNav.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
     }
 
-    hamburger.addEventListener('click', toggleMobileMenu);
-    mobileOverlay.addEventListener('click', toggleMobileMenu);
+    function openMobileMenu() {
+      isMenuOpen = true;
+      hamburger.classList.add('active');
+      mobileNav.classList.add('active');
+      mobileOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function toggleMobileMenu(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      
+      if (isMenuOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    }
+
+    if (hamburger) {
+      hamburger.addEventListener('click', toggleMobileMenu);
+      hamburger.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        toggleMobileMenu(e);
+      }, { passive: false });
+    }
+
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener('click', closeMobileMenu);
+      mobileOverlay.addEventListener('touchstart', closeMobileMenu, { passive: true });
+    }
 
     mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        toggleMobileMenu();
-      });
+      link.addEventListener('click', closeMobileMenu);
+      link.addEventListener('touchstart', function() {
+        setTimeout(closeMobileMenu, 300);
+      }, { passive: true });
     });
 
     // Enhanced Particles System
     function createParticles() {
       const particlesContainer = document.getElementById('particles');
+      if (!particlesContainer) return;
+      
       const sizes = ['small', 'medium', 'large'];
       const particleCount = window.innerWidth < 768 ? 30 : 50;
       
@@ -1249,7 +1351,7 @@
       }
     }
 
-    // Enhanced Scroll Animations
+    // Enhanced Scroll Animations - FIXED
     function handleProjectScroll() {
       const projects = document.querySelectorAll('.project');
       
@@ -1265,10 +1367,12 @@
       });
     }
 
-    // Scroll to Top Button
+    // Scroll to Top Button - FIXED
     function handleScrollButton() {
       const scrollButton = document.getElementById('scrollToTop');
-      if (window.pageYOffset > 400) {
+      const scrollThreshold = Math.max(window.innerHeight * 0.5, 400);
+      
+      if (window.pageYOffset > scrollThreshold) {
         scrollButton.classList.add('visible');
       } else {
         scrollButton.classList.remove('visible');
@@ -1282,67 +1386,99 @@
       });
     }
 
-    // Form Submit Handler
-    function handleSubmit(e) {
-      e.preventDefault();
-      const nama = document.getElementById('nama').value;
-      const email = document.getElementById('email').value;
-      const pesan = document.getElementById('pesan').value;
-      
-      const subject = encodeURIComponent(`Pesan dari ${nama}`);
-      const body = encodeURIComponent(`Nama: ${nama}\nEmail: ${email}\n\nPesan:\n${pesan}`);
-      
-      window.location.href = `mailto:mukiyi3747@gmail.com?subject=${subject}&body=${body}`;
-    }
+    // Form Submit Handler - FIXED with validation feedback
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
 
-    // Parallax Effect on Scroll
-    let ticking = false;
-    function parallaxScroll() {
-      const scrolled = window.pageYOffset;
-      const parallaxElements = document.querySelectorAll('.card, .project');
-      
-      parallaxElements.forEach((el, index) => {
-        const speed = 0.3 + (index * 0.05);
-        const yPos = -(scrolled * speed / 100);
-        if (el.getBoundingClientRect().top < window.innerHeight) {
-          el.style.transform = `translateY(${yPos}px)`;
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nama = document.getElementById('nama').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const pesan = document.getElementById('pesan').value.trim();
+        
+        if (!nama || !email || !pesan) {
+          showFormMessage('Mohon isi semua field', 'error');
+          return;
         }
+        
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.querySelector('span').textContent = 'Mengirim...';
+        
+        const subject = encodeURIComponent(`Pesan dari ${nama}`);
+        const body = encodeURIComponent(`Nama: ${nama}\nEmail: ${email}\n\nPesan:\n${pesan}`);
+        
+        setTimeout(() => {
+          window.location.href = `mailto:mukiyi3747@gmail.com?subject=${subject}&body=${body}`;
+          showFormMessage('Email client akan terbuka!', 'success');
+          
+          setTimeout(() => {
+            contactForm.reset();
+            submitButton.disabled = false;
+            submitButton.querySelector('span').textContent = 'Kirim Pesan';
+            clearFormMessage();
+          }, 2000);
+        }, 500);
       });
-      
-      ticking = false;
     }
 
-    function requestParallax() {
-      if (!ticking && window.innerWidth > 768) {
-        window.requestAnimationFrame(parallaxScroll);
-        ticking = true;
+    function showFormMessage(message, type) {
+      if (formMessage) {
+        formMessage.textContent = message;
+        formMessage.className = `form-message ${type}`;
+        formMessage.style.display = 'block';
       }
     }
 
-    // Mouse Move Effect on Cards (Desktop only)
+    function clearFormMessage() {
+      if (formMessage) {
+        setTimeout(() => {
+          formMessage.style.display = 'none';
+          formMessage.textContent = '';
+          formMessage.className = 'form-message';
+        }, 300);
+      }
+    }
+
+    // Optimized scroll handling
+    let scrollTicking = false;
+    function onScroll() {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(() => {
+          handleProjectScroll();
+          handleScrollButton();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }
+
+    // Mouse Move Effect on Cards (Desktop only) - FIXED: Removed parallax conflict
     if (window.innerWidth > 768) {
-      document.addEventListener('mousemove', (e) => {
-        const cards = document.querySelectorAll('.card, .project');
-        cards.forEach(card => {
-          const rect = card.getBoundingClientRect();
+      const cards = document.querySelectorAll('.card:not(.project), .project');
+      
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.willChange = 'transform';
+        });
+        
+        card.addEventListener('mousemove', function(e) {
+          const rect = this.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = (y - centerY) / 30;
+          const rotateY = (centerX - x) / 30;
           
-          if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-          }
+          this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
         });
-      });
-
-      document.addEventListener('mouseleave', () => {
-        const cards = document.querySelectorAll('.card, .project');
-        cards.forEach(card => {
-          card.style.transform = '';
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = '';
+          this.style.willChange = 'auto';
         });
       });
     }
@@ -1351,19 +1487,20 @@
     window.addEventListener('load', () => {
       createParticles();
       handleProjectScroll();
-    });
-
-    window.addEventListener('scroll', () => {
-      handleProjectScroll();
       handleScrollButton();
-      requestParallax();
     });
 
-    // Smooth scroll for navigation links
+    window.addEventListener('scroll', onScroll);
+
+    // Smooth scroll for navigation links - FIXED
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
+        
         if (target) {
           const offset = 80;
           const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -1376,18 +1513,28 @@
       });
     });
 
+    // Scroll to top button click handler
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    if (scrollToTopBtn) {
+      scrollToTopBtn.addEventListener('click', scrollToTop);
+    }
+
     // Close mobile menu on escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-        toggleMobileMenu();
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMobileMenu();
       }
     });
 
-    // Prevent scroll issues on resize
+    // Prevent scroll issues on resize - FIXED
+    let resizeTimer;
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
-        toggleMobileMenu();
-      }
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth > 768 && isMenuOpen) {
+          closeMobileMenu();
+        }
+      }, 250);
     });
   </script>
 </body>
