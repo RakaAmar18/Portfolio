@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="Portfolio Raka Amar Taru Lintang - Frontend Developer & Designer"/>
+  <meta name="theme-color" content="#06b6d4"/>
+  <title>Portfolio — Raka Amar Taru Lintang</title>
+  <link rel="stylesheet" href="src/Style_po.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+</head>
+<body>
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loader"></div>
+  </div>
+  <div class="bg-gradient"></div>
+  <div class="bg-overlay"></div>
+  <div class="particles" id="particles"></div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">RA</div>
+        <div class="brand-text">
+          <h1>Raka Amar Taru Lintang</h1>
+          <div class="subtitle">Frontend Developer • Designer</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle theme" tabindex="0">
+        <span id="themeIcon">🌙</span>
+      </div>
+      <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+    <div class="mobile-nav" id="mobileNav" role="navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <main class="hero">
+      <section class="intro">
+        <div class="card intro-card">
+          <h2>Halo, saya Raka 👋</h2>
+          <p>Saya membuat aplikasi web dan antarmuka pengguna yang rapi, cepat, dan mudah digunakan. Berikut beberapa proyek dan kemampuan saya.</p>
+          <div class="socials">
+            <a class="btn" href="cv.html" target="_blank"><span>📄 Lihat CV</span></a>
+            <a class="btn" href="asset/RakaAmar_CV.pdf" download="RakaAmar_CV.pdf"><span>⬇️ Download CV</span></a>
+            <a class="btn" href="https://github.com/RakaAmar18" target="_blank" rel="noopener"><span>💻 GitHub</span></a>
+          </div>
+        </div>
+        <div class="card section-card">
+          <h3>Keahlian</h3>
+          <div class="skills">
+            <div class="chip">HTML</div>
+            <div class="chip">CSS</div>
+            <div class="chip">JavaScript</div>
+            <div class="chip">Python</div>
+            <div class="chip">UI/UX</div>
+          </div>
+        </div>
+        <div class="card section-card" id="about">
+          <h3>Tentang Saya</h3>
+          <p>Saya adalah pengembang yang suka menyelesaikan masalah dengan antarmuka sederhana dan pengalaman pengguna yang baik. Selalu belajar teknologi baru dan memperbaiki alur kerja.</p>
+        </div>
+      </section>
+      <aside class="profile">
+        <div class="avatar">
+          <img src="asset/Raka.jpg" alt="Raka Avatar" loading="lazy">
+        </div>
+        <div class="card">
+          <div class="label">Lokasi</div>
+          <div class="value">Jakarta, Indonesia</div>
+        </div>
+        <div class="card">
+          <div class="label">Kontak</div>
+          <div class="value">mukiyi3747@gmail.com</div>
+        </div>
+      </aside>
+    </main>
+    <section id="projects" style="margin-bottom:72px">
+      <h2 class="section-title">Proyek</h2>
+      <div class="project-slider-container">
+        <div class="project-list" id="projectSlider">
+          <a class="project" href="https://github.com/RakaAmar18/Pembuatan-Surat-Berharga.git" target="_blank" rel="noopener">
+            <img class="project-image" src="asset/Ktp-Sim.jpg" alt="Pembuatan Surat Berharga" loading="lazy">
+            <div class="project-content">
+              <h3>Pembuatan Surat Berharga</h3>
+              <p>Sistem manajemen permintaan dokumen SIM/KTP dengan dashboard admin dan proses pengiriman.</p>
+            </div>
+          </a>
+          <a class="project" href="https://github.com/RakaAmar18/secretcode.git" target="_blank" rel="noopener">
+            <img class="project-image" src="asset/Stealthtext.jpg" alt="StealthText" loading="lazy">
+            <div class="project-content">
+              <h3>StealthText</h3>
+              <p>Aplikasi enkripsi dan dekripsi teks rahasia berbasis web dengan antarmuka minimalis dan modern.</p>
+            </div>
+          </a>
+          <a class="project" href="https://github.com/RakaAmar18/Portfolio.git" target="_blank" rel="noopener">
+            <img class="project-image" src="asset/Portfolio.jpg" alt="Portfolio" loading="lazy">
+            <div class="project-content">
+              <h3>Portfolio</h3>
+              <p>Situs portofolio pribadi responsif yang menampilkan proyek, keahlian, dan kontak dengan desain modern.</p>
+            </div>
+          </a>
+        </div>
+        <div class="slider-nav">
+          <button class="slider-btn" id="prevBtn" aria-label="Previous">‹</button>
+          <div class="slider-dots" id="sliderDots"></div>
+          <button class="slider-btn" id="nextBtn" aria-label="Next">›</button>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="card">
+        <h2 class="section-title">Kontak</h2>
+        <p>Ingin bekerja sama atau menanyakan sesuatu? Kirim pesan lewat form ini:</p>
+        <form id="contactForm">
+          <input id="nama" placeholder="Nama" required/>
+          <input id="email" type="email" placeholder="Email" required/>
+          <textarea id="pesan" placeholder="Pesan" required></textarea>
+          <button type="submit"><span>Kirim Pesan</span></button>
+          <div id="formMessage"></div>
+        </form>
+      </div>
+    </section>
+    <footer>© 2025 Raka Amar Taru Lintang</footer>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator" role="button" aria-label="Scroll to top" tabindex="0">
+    <span>↑</span>
+  </div>
+  <script src="src/po.js"></script>
+</body>
+</html>
