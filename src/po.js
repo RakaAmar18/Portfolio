@@ -52,14 +52,10 @@ const ovr = document.getElementById('mobileOverlay');
 const links = document.querySelectorAll('.mobile-nav a');
 
 function toggleMenu() {
-  try {
-    ham?.classList.toggle('active');
-    mob?.classList.toggle('active');
-    ovr?.classList.toggle('active');
-    document.body.style.overflow = mob?.classList.contains('active') ? 'hidden' : '';
-  } catch (e) {
-    console.error('Toggle menu error:', e);
-  }
+  ham?.classList.toggle('active');
+  mob?.classList.toggle('active');
+  ovr?.classList.toggle('active');
+  document.body.style.overflow = mob?.classList.contains('active') ? 'hidden' : '';
 }
 
 function closeMenu() {
@@ -69,7 +65,7 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
-// Event buka/tutup
+// buka/tutup menu
 ham?.addEventListener('click', toggleMenu);
 ham?.addEventListener('keydown', e => {
   if (e.key === 'Enter' || e.key === ' ') {
@@ -78,39 +74,32 @@ ham?.addEventListener('keydown', e => {
   }
 });
 
-// Klik overlay → tutup menu
+// klik overlay → tutup menu
 ovr?.addEventListener('click', closeMenu);
 
+// klik link di menu mobile → scroll ke section
 links.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-
     const targetId = link.getAttribute('href');
-    if (!targetId) return;
+    const target = document.querySelector(targetId);
+
+    if (!target) return;
 
     closeMenu();
 
     setTimeout(() => {
-      try {
-        const target = document.querySelector(targetId);
-        if (target) {
-          const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-          const targetPosition =
-            target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+      const headerHeight = document.querySelector('header')?.offsetHeight || 70;
+      const targetPos = target.getBoundingClientRect().top + window.scrollY - headerHeight - 10;
 
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        } else {
-          console.warn('Elemen target tidak ditemukan:', targetId);
-        }
-      } catch (err) {
-        console.warn('Navigation scroll error:', err);
-      }
-    }, 350);
+      window.scrollTo({
+        top: targetPos,
+        behavior: 'smooth'
+      });
+    }, 300);
   });
 });
+
 
 // ==================== SLIDER ====================
 let cur = 0,
