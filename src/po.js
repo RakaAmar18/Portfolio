@@ -1,4 +1,4 @@
-// ==================== LOADING SCREEN ====================
+    // ==================== LOADING SCREEN ====================
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loadingScreen')?.classList.add('hidden');
@@ -49,13 +49,20 @@ function createParticles() {
 const ham = document.getElementById('hamburger');
 const mob = document.getElementById('mobileNav');
 const ovr = document.getElementById('mobileOverlay');
-const links = document.querySelectorAll('.mobile-nav a');
 
 function toggleMenu() {
-  ham?.classList.toggle('active');
-  mob?.classList.toggle('active');
-  ovr?.classList.toggle('active');
-  document.body.style.overflow = mob?.classList.contains('active') ? 'hidden' : '';
+  const isActive = ham?.classList.contains('active');
+  if (isActive) {
+    ham?.classList.remove('active');
+    mob?.classList.remove('active');
+    ovr?.classList.remove('active');
+    document.body.style.overflow = '';
+  } else {
+    ham?.classList.add('active');
+    mob?.classList.add('active');
+    ovr?.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 }
 
 function closeMenu() {
@@ -77,28 +84,35 @@ ham?.addEventListener('keydown', e => {
 // klik overlay → tutup menu
 ovr?.addEventListener('click', closeMenu);
 
-// klik link di menu mobile → scroll ke section
-links.forEach(link => {
-  link.addEventListener('click', e => {
+// klik link di menu mobile → scroll ke section (event delegation)
+const mobileNav = document.getElementById('mobileNav');
+if (mobileNav) {
+  mobileNav.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (!link) return;
+    
     e.preventDefault();
-    const targetId = link.getAttribute('href');
-    const target = document.querySelector(targetId);
-
+    
+    const href = link.getAttribute('href');
+    if (!href.startsWith('#')) return;
+    
+    const target = document.querySelector(href);
     if (!target) return;
-
+    
     closeMenu();
-
+    
     setTimeout(() => {
-      const headerHeight = document.querySelector('header')?.offsetHeight || 70;
-      const targetPos = target.getBoundingClientRect().top + window.scrollY - headerHeight - 10;
-
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 80;
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+      
       window.scrollTo({
-        top: targetPos,
+        top: targetPosition,
         behavior: 'smooth'
       });
-    }, 300);
+    }, 350);
   });
-});
+}
 
 
 // ==================== SLIDER ====================
