@@ -81,7 +81,6 @@ ham?.addEventListener('keydown', e => {
 // Klik overlay → tutup menu
 ovr?.addEventListener('click', closeMenu);
 
-// ✅ FIX: klik link di mobile menu sekarang benar-benar scroll
 links.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -91,7 +90,6 @@ links.forEach(link => {
 
     closeMenu();
 
-    // Tunggu animasi menu selesai dulu
     setTimeout(() => {
       try {
         const target = document.querySelector(targetId);
