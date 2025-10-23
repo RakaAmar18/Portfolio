@@ -1,11 +1,11 @@
-// Loading Screen
+// ==================== LOADING SCREEN ====================
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loadingScreen')?.classList.add('hidden');
   }, 800);
 });
 
-// Theme Toggle
+// ==================== THEME TOGGLE ====================
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
 const theme = localStorage.getItem('theme') || 'dark';
@@ -24,7 +24,7 @@ themeToggle?.addEventListener('click', () => {
   localStorage.setItem('theme', isLight ? 'light' : 'dark');
 });
 
-// Particles
+// ==================== PARTICLES ====================
 function createParticles() {
   const c = document.getElementById('particles');
   if (!c) return;
@@ -45,7 +45,7 @@ function createParticles() {
   }
 }
 
-// Menu
+// ==================== MENU ====================
 const ham = document.getElementById('hamburger');
 const mob = document.getElementById('mobileNav');
 const ovr = document.getElementById('mobileOverlay');
@@ -62,7 +62,6 @@ function toggleMenu() {
   }
 }
 
-// ✅ Function closeMenu
 function closeMenu() {
   ham?.classList.remove('active');
   mob?.classList.remove('active');
@@ -70,7 +69,7 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
-// Event: buka/tutup menu
+// Event buka/tutup
 ham?.addEventListener('click', toggleMenu);
 ham?.addEventListener('keydown', e => {
   if (e.key === 'Enter' || e.key === ' ') {
@@ -79,39 +78,43 @@ ham?.addEventListener('keydown', e => {
   }
 });
 
-// Event: klik overlay → tutup menu
+// Klik overlay → tutup menu
 ovr?.addEventListener('click', closeMenu);
 
-// Event: klik link di mobile menu
+// ✅ FIX: klik link di mobile menu sekarang benar-benar scroll
 links.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    e.stopPropagation();
 
     const targetId = link.getAttribute('href');
-    closeMenu(); 
+    if (!targetId) return;
 
+    closeMenu();
+
+    // Tunggu animasi menu selesai dulu
     setTimeout(() => {
       try {
         const target = document.querySelector(targetId);
         if (target) {
-          const headerHeight = document.querySelector('header')?.offsetHeight || 100;
+          const headerHeight = document.querySelector('header')?.offsetHeight || 80;
           const targetPosition =
-            target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+            target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
 
           window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
           });
+        } else {
+          console.warn('Elemen target tidak ditemukan:', targetId);
         }
       } catch (err) {
         console.warn('Navigation scroll error:', err);
       }
-    }, 400);
+    }, 350);
   });
 });
 
-// Slider
+// ==================== SLIDER ====================
 let cur = 0,
   tot = 0,
   perSlide = 2;
@@ -194,7 +197,7 @@ function prevSlide() {
 prev?.addEventListener('click', prevSlide);
 next?.addEventListener('click', nextSlide);
 
-// Touch Support
+// Touch support
 let sx = 0,
   sy = 0,
   drag = false;
@@ -218,10 +221,8 @@ if (sl) {
   sl.addEventListener('touchend', e => {
     if (!drag) return;
     const ex = e.changedTouches[0].clientX;
-    const ey = e.changedTouches[0].clientY;
     const dx = sx - ex;
-    const dy = sy - ey;
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+    if (Math.abs(dx) > 50) {
       if (dx > 0) nextSlide();
       else prevSlide();
     }
@@ -235,7 +236,7 @@ window.addEventListener('resize', () => {
   rto = setTimeout(() => initSlider(), 150);
 });
 
-// Scroll Indicator
+// ==================== SCROLL INDICATOR ====================
 const sci = document.getElementById('scrollIndicator');
 
 if (sci) {
@@ -243,90 +244,61 @@ if (sci) {
   window.addEventListener('scroll', () => {
     if (sto) return;
     sto = setTimeout(() => {
-      try {
-        if (window.scrollY > 300) sci.classList.add('visible');
-        else sci.classList.remove('visible');
-      } catch (e) {
-        console.error('Scroll error:', e);
-      }
+      if (window.scrollY > 300) sci.classList.add('visible');
+      else sci.classList.remove('visible');
       sto = null;
     }, 16);
   });
 
   sci.addEventListener('click', () => {
-    try {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (e) {
-      console.error('Scroll error:', e);
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   sci.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      try {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } catch (e) {
-        console.error('Scroll error:', e);
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
 }
 
-// Contact Form
+// ==================== CONTACT FORM ====================
 const form = document.getElementById('contactForm');
 const msg = document.getElementById('formMessage');
 
 if (form) {
   form.addEventListener('submit', e => {
     e.preventDefault();
-    try {
-      const n = document.getElementById('nama')?.value || '';
-      const em = document.getElementById('email')?.value || '';
-      const pe = document.getElementById('pesan')?.value || '';
+    const n = document.getElementById('nama')?.value || '';
+    const em = document.getElementById('email')?.value || '';
+    const pe = document.getElementById('pesan')?.value || '';
 
-      if (!n.trim() || !em.trim() || !pe.trim()) {
-        if (msg) {
-          msg.className = 'form-message error';
-          msg.textContent = '⚠️ Mohon lengkapi semua field.';
-        }
-        return;
-      }
+    if (!n.trim() || !em.trim() || !pe.trim()) {
+      msg.className = 'form-message error';
+      msg.textContent = '⚠️ Mohon lengkapi semua field.';
+      return;
+    }
 
-      const btn = form.querySelector('button[type="submit"]');
-      if (btn) {
-        btn.disabled = true;
-        btn.innerHTML = '<span>Mengirim...</span>';
-      }
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.innerHTML = '<span>Mengirim...</span>';
+
+    setTimeout(() => {
+      msg.className = 'form-message success';
+      msg.textContent = '✓ Pesan berhasil dikirim!';
+      btn.disabled = false;
+      btn.innerHTML = '<span>Kirim Pesan</span>';
+      form.reset();
 
       setTimeout(() => {
-        if (msg) {
-          msg.className = 'form-message success';
-          msg.textContent = '✓ Pesan berhasil dikirim!';
-        }
-        if (btn) {
-          btn.disabled = false;
-          btn.innerHTML = '<span>Kirim Pesan</span>';
-        }
-        form.reset();
-        setTimeout(() => {
-          if (msg) {
-            msg.textContent = '';
-            msg.className = '';
-          }
-        }, 5000);
-      }, 1500);
-    } catch (e) {
-      console.error('Form error:', e);
-      if (msg) {
-        msg.className = 'form-message error';
-        msg.textContent = '⚠️ Terjadi kesalahan. Silakan coba lagi.';
-      }
-    }
+        msg.textContent = '';
+        msg.className = '';
+      }, 5000);
+    }, 1500);
   });
 }
 
-// Intersection Observer
+// ==================== INTERSECTION OBSERVER ====================
 let obs = null;
 try {
   obs = new IntersectionObserver(
@@ -338,32 +310,32 @@ try {
     { threshold: 0.1 }
   );
 
-  projs.forEach(p => obs?.observe(p));
+  projs.forEach(p => obs.observe(p));
 } catch (e) {
   console.error('Observer error:', e);
   projs.forEach(p => p.classList.add('visible'));
 }
 
-// Initialize
+// ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', () => {
   createParticles();
   setTimeout(() => initSlider(), 100);
 });
 
-// Smooth Scroll (desktop nav)
-document.querySelectorAll('a[href^="#"]:not(.mobile-nav a)').forEach(a => {
+// ==================== SMOOTH SCROLL (DESKTOP NAV) ====================
+document.querySelectorAll('header nav a[href^="#"]').forEach(a => {
   a.addEventListener('click', function (e) {
     e.preventDefault();
-    try {
-      const t = document.querySelector(this.getAttribute('href'));
-      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } catch (e) {
-      console.error('Scroll error:', e);
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) {
+      const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+      const pos = t.getBoundingClientRect().top + window.scrollY - headerHeight - 10;
+      window.scrollTo({ top: pos, behavior: 'smooth' });
     }
   });
 });
 
-// Copy to Clipboard (Email)
+// ==================== COPY EMAIL ====================
 const emailElement = document.querySelector('.profile .card:nth-child(3) .value');
 if (emailElement) {
   emailElement.style.cursor = 'pointer';
@@ -376,9 +348,7 @@ if (emailElement) {
         .then(() => {
           const originalText = emailElement.textContent;
           emailElement.textContent = 'Email copied! ✓';
-          setTimeout(() => {
-            emailElement.textContent = originalText;
-          }, 2000);
+          setTimeout(() => (emailElement.textContent = originalText), 2000);
         })
         .catch(() => {});
     }
