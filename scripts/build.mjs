@@ -5,6 +5,8 @@
  * An omitted showcase URL displays the in-progress state without a fake link.
  * Run npm run build before publishing; npm run dev serves the committed output.
  * Only public product summaries and approved public links belong in this data.
+ * Optional coverWords describe real product capabilities on the editorial cover.
+ * The cutout portrait is derived from the existing public GitHub avatar.
  */
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -38,17 +40,8 @@ const iconPaths = {
   mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/>',
   pin: '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/>',
   code: '<path d="m7 6-5 6 5 6m10-12 5 6-5 6m-3-15-4 18"/>',
-  phone:
-    '<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/>',
-  layout:
-    '<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 8h18M10 8v13"/>',
   lock: '<rect x="5" y="10" width="14" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
-  book: '<path d="M12 5c-3-2-6-2-10-1v15c4-1 7-1 10 1m0-15c3-2 6-2 10-1v15c-4-1-7-1-10 1V5Z"/>',
-  heart:
-    '<path d="M20 5a5 5 0 0 0-8 1 5 5 0 0 0-8-1c-3 3-1 6 1 8l7 7 7-7c2-2 4-5 1-8Z"/>',
   search: '<circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/>',
-  text: '<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M7 8h10M12 8v9M9 17h6"/>',
-  document: '<path d="M14 2H5v20h14V7l-5-5Zm0 0v5h5M8 11h8M8 15h8M8 18h5"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   check: '<circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/>',
   github:
@@ -58,18 +51,18 @@ const icon = (name, extraClass = "") =>
   `<svg class="icon ${extraClass}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${iconPaths[name]}</svg>`;
 const external = 'target="_blank" rel="noopener noreferrer"';
 const artContent = {
-  class: ["Pembelajaran digital", "book"],
-  anabul: ["Donasi & komunitas", "heart"],
-  siasat: ["Pesta penyusup", "search"],
-  text: ["Eksperimen web", "text"],
-  docs: ["Aplikasi desktop", "document"],
-  portfolio: ["Portfolio pribadi", "layout"],
+  class: "Pembelajaran digital",
+  anabul: "Donasi & komunitas",
+  siasat: "Pesta penyusup",
+  text: "Eksperimen web",
+  docs: "Aplikasi desktop",
+  portfolio: "Portfolio pribadi",
 };
 
 function art(project) {
-  const [caption, symbol] = artContent[project.art];
+  const caption = artContent[project.art];
   const title = escape(project.name);
-  return `<div class="project-art art-${project.art}" aria-hidden="true"><span class="art-heading">${title}</span><span class="art-caption">${caption}</span>${icon(symbol, "art-symbol")}</div>`;
+  return `<div class="project-art art-${project.art}" aria-hidden="true"><span class="art-initial">${escape(project.name[0])}</span><span class="art-heading">${title}</span>${project.coverWords ? `<span class="art-words">${project.coverWords.map((word) => `<span>${escape(word)}</span>`).join("")}</span>` : ""}<span class="art-caption">${caption}</span></div>`;
 }
 
 function card(project, homepage = false) {
@@ -92,7 +85,7 @@ function card(project, homepage = false) {
   return `<article class="project-card" id="${project.id}" data-project data-category="${escape(project.category)}" data-search="${escape(search)}">
     ${art(project)}
     <div class="project-content">
-      <div class="project-meta"><span>${escape(project.category)} · ${escape(project.format)}</span><span class="source-label">${icon(project.source === "private" ? "lock" : "code")}${project.source === "private" ? "Source private" : "Source publik"}</span></div>
+      <div class="project-meta"><span>${escape(project.category)}${project.category === project.format ? "" : ` · ${escape(project.format)}`}</span><span class="source-label">${icon(project.source === "private" ? "lock" : "code")}${project.source === "private" ? "Source private" : "Source publik"}</span></div>
       <h3>${escape(project.name)}</h3>
       <p>${escape(project.description)}</p>
       <ul class="tech-list" aria-label="Teknologi ${escape(project.name)}">${project.tech.map((tech) => `<li>${escape(tech)}</li>`).join("")}</ul>
@@ -149,7 +142,7 @@ function page({
   <link rel="icon" href="/asset/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/asset/fonts/bangers.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/asset/fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin>
-  ${preloadAvatar ? '<link rel="preload" href="/asset/github-avatar.webp" as="image">' : ""}
+  ${preloadAvatar ? '<link rel="preload" href="/asset/raka-cutout.png" as="image">' : ""}
   <link rel="stylesheet" href="/src/Style_po.css?v=${styleVersion}">
   <script src="/src/po.js?v=${scriptVersion}" type="module"></script>
 </head>
@@ -163,19 +156,18 @@ function page({
 }
 
 const home = `<section class="hero wrap" aria-labelledby="intro-title">
+  <h1 id="intro-title"><span>Raka</span> <span class="name-outline">Amar</span><span class="sr-only"> Taru Lintang</span></h1>
   <div class="hero-copy">
-    <h1 id="intro-title">Halo, saya<br><span>Raka Amar.</span></h1>
-    <div class="role"><span>Frontend developer</span><span>Mobile apps</span><span>UI/UX</span></div>
-    <p>Saya Raka Amar Taru Lintang. Saya membuat antarmuka web, aplikasi mobile, dan aplikasi desktop dengan alur yang mudah dipahami dan tampilan yang berkarakter.</p>
-    <div class="hero-actions"><a class="button" href="#karya">Lihat karya pilihan ${icon("arrow")}</a><a class="button secondary" href="#kontak">Hubungi saya ${icon("mail")}</a></div>
-    <div class="hero-location">${icon("pin")}Jakarta, Indonesia · CodeByRakaStudio</div>
+    <p class="role">Frontend & mobile developer</p>
+    <p>Saya Raka Amar Taru Lintang. Membuat aplikasi untuk belajar, bermain, dan kegiatan sehari-hari.</p>
+    <div class="hero-actions"><a class="button" href="#karya">Jelajahi karya ${icon("arrow")}</a><a class="text-link" href="#kontak">Hubungi saya</a></div>
   </div>
-  <figure class="portrait-panel" style="margin:0">
-    <img src="/asset/github-avatar.webp" width="460" height="460" alt="Potret komik Raka Amar yang digunakan pada profil GitHub" fetchpriority="high">
-    <figcaption class="portrait-caption"><strong>Raka Amar</strong><span>Web. Mobile. Desktop.</span></figcaption>
+  <figure class="portrait-panel">
+    <img src="/asset/raka-cutout.png" width="460" height="460" alt="Raka Amar Taru Lintang" fetchpriority="high">
   </figure>
+  <p class="hero-location">${icon("pin")}Jakarta, Indonesia</p>
+  <div class="cover-footer"><span>Web & antarmuka</span><span>Mobile & desktop</span><span>Desain UI/UX</span></div>
 </section>
-<div class="focus-strip wrap"><span>${icon("code")}Antarmuka web</span><span>${icon("phone")}Aplikasi mobile</span><span>${icon("layout")}Desain UI/UX</span><span>${icon("document")}Aplikasi desktop</span></div>
 <section class="section wrap" id="karya" aria-labelledby="work-title">
   <div class="section-heading"><div><h2 id="work-title">Karya pilihan</h2><p>Pendidikan, komunitas, dan game. Tiga proyek dengan kebutuhan dan pengalaman yang berbeda.</p></div><a class="text-link" href="/labs/">Semua proyek ${icon("arrow")}</a></div>
   <div class="project-grid featured-grid">${projects
@@ -185,7 +177,7 @@ const home = `<section class="hero wrap" aria-labelledby="intro-title">
 </section>
 <section class="section about-section" id="tentang" aria-labelledby="about-title">
   <div class="wrap about-layout">
-    <div class="about-copy"><h2 id="about-title">Di balik layarnya</h2><p>Saya suka mengerjakan produk yang punya kegunaan jelas. Dari pembelajaran digital sampai permainan bersama teman, saya memperhatikan alur, keterbacaan, dan detail interaksi.</p><p>Teknologi saya pilih sesuai kebutuhan proyek. Yang penting, hasilnya nyaman digunakan dan kodenya tetap mudah dirawat.</p><a class="text-link" href="/cv.html">Lihat CV ${icon("arrow")}</a></div>
+    <div class="about-copy"><h2 id="about-title">Tentang Raka</h2><p>Proyek saya bergerak di beberapa bidang: pembelajaran digital, komunitas penyelamat hewan, dan permainan bersama teman.</p><p>Saya mengerjakan antarmuka web dan mobile, serta aplikasi desktop dengan Python. Teknologi dipilih sesuai kebutuhan produknya.</p><a class="text-link" href="/cv.html">Lihat CV ${icon("arrow")}</a></div>
     <dl class="skills-list"><div class="skill-group"><dt>Web & antarmuka</dt><dd>HTML · CSS · JavaScript · TypeScript · React · UI/UX</dd></div><div class="skill-group"><dt>Mobile & desktop</dt><dd>React Native · Expo · Python · Tkinter</dd></div><div class="skill-group"><dt>Backend & data</dt><dd>Laravel · PostgreSQL · MySQL</dd></div><div class="skill-group"><dt>Alur kerja</dt><dd>Git · GitHub · Pengembangan dan pengujian antarmuka</dd></div></dl>
   </div>
 </section>
@@ -205,7 +197,7 @@ const categories = [
 const labs = `<div class="wrap"><header class="page-hero"><h1>Project Labs</h1><p>Kumpulan proyek web, mobile, dan desktop. Pilih bidang yang ingin dilihat, atau cari berdasarkan nama dan teknologi.</p><a class="text-link" href="/portfolio-labs/">Mencari showcase produk? ${icon("arrow")}</a></header>
 <section class="catalogue" aria-label="Katalog proyek">
   <div class="catalogue-tools" id="catalogue-tools" hidden><div class="search-field"><label for="project-search">Cari proyek atau teknologi</label><div class="search-box">${icon("search")}<input id="project-search" type="search" placeholder="Misalnya: React, game, V-Class" autocomplete="off"></div></div><div class="filters" role="group" aria-label="Filter bidang proyek">${categories.map((category) => `<button class="filter" type="button" data-filter="${escape(category)}" aria-pressed="${category === "Semua"}">${escape(category)}</button>`).join("")}</div></div>
-  <div class="catalogue-summary"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">${projects.length} dari ${projects.length} proyek</p><p>Proyek private ditampilkan sebagai ringkasan, tanpa membuka source atau dokumen internal.</p></div>
+  <div class="catalogue-summary"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">${projects.length} dari ${projects.length} proyek</p><p>Beberapa source proyek tidak dipublikasikan.</p></div>
   <div class="project-grid">${projects.map((project) => card(project)).join("")}</div>
   <div class="no-results" id="no-results" hidden><h2>Tidak ada proyek yang cocok</h2><p>Coba kata lain atau tampilkan kembali semua bidang.</p><button class="button" type="button" data-reset-search>Reset pencarian ${icon("arrow")}</button></div>
 </section></div>`;

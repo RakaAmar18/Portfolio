@@ -6,6 +6,7 @@
     "format": "Web & desktop",
     "description": "Materi, tugas, kuis, dan ujian untuk sekolah. Satu ekosistem pembelajaran, dengan V-Class ExamHub untuk desktop.",
     "tech": ["Web", "Desktop", "PostgreSQL"],
+    "coverWords": ["Materi", "Tugas", "Ujian"],
     "source": "private",
     "featured": true,
     "showcase": {
