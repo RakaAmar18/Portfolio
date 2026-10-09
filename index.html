@@ -1,130 +1,95 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="description" content="Portfolio Raka Amar Taru Lintang - Frontend Developer & Designer"/>
-  <meta name="theme-color" content="#06b6d4"/>
-  <title>Raka Amar Taru Lintang</title>
-  <link rel="stylesheet" href="src/Style_po.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio Raka Amar Taru Lintang. Antarmuka web, aplikasi mobile, aplikasi desktop, dan showcase proyek dengan karakter komik.">
+  <meta name="theme-color" content="#fffdf5">
+  <title>Raka Amar | Portfolio · CodeByRakaStudio</title>
+  <link rel="canonical" href="https://rakaamar.site/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Raka Amar | Portfolio · CodeByRakaStudio">
+  <meta property="og:description" content="Portfolio Raka Amar Taru Lintang. Antarmuka web, aplikasi mobile, aplikasi desktop, dan showcase proyek dengan karakter komik.">
+  <meta property="og:url" content="https://rakaamar.site/">
+  <meta property="og:site_name" content="CodeByRakaStudio">
+  <link rel="icon" href="/asset/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/asset/fonts/bangers.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/asset/fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/asset/github-avatar.webp" as="image">
+  <link rel="stylesheet" href="/src/Style_po.css?v=2705938f01f0">
+  <script src="/src/po.js?v=74aa705941af" type="module"></script>
 </head>
 <body>
-  <div class="loading-screen" id="loadingScreen">
-    <div class="loader"></div>
-  </div>
-  <div class="bg-gradient"></div>
-  <div class="bg-overlay"></div>
-  <div class="particles" id="particles"></div>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">RA</div>
-        <div class="brand-text">
-          <h1>Raka Amar Taru Lintang</h1>
-          <div class="subtitle">Frontend Developer • Designer</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+  <a class="skip-link" href="#main">Langsung ke konten</a>
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="/" aria-label="CodeByRakaStudio, beranda"><span class="brand-mark" aria-hidden="true">RA</span><span class="brand-name">CodeByRakaStudio</span></a>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-controls="site-navigation" aria-expanded="false" aria-label="Buka navigasi" hidden><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <nav class="site-nav" id="site-navigation" aria-label="Navigasi utama">
+        <a href="/" aria-current="page">Portfolio</a><a href="/labs/" >Project Labs</a><a href="/portfolio-labs/" >Portfolio Labs</a>
+        <a class="nav-contact" href="/#kontak">Kontak <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </nav>
-      <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle theme" tabindex="0">
-        <span id="themeIcon">🌙</span>
-      </div>
-    </header>
-    <main class="hero">
-      <section class="intro">
-        <div class="card intro-card">
-          <h2>Halo, saya Raka 👋</h2>
-          <p>Saya membuat aplikasi web dan antarmuka pengguna yang rapi, cepat, dan mudah digunakan. Berikut beberapa proyek dan kemampuan saya.</p>
-          <div class="socials">
-            <a class="btn" href="cv.html" target="_blank"><span>📄 Lihat CV</span></a>
-            <a class="btn" href="asset/RakaAmar_CV.pdf" download="RakaAmar_CV.pdf"><span>⬇️ Download CV</span></a>
-            <a class="btn" href="https://github.com/RakaAmar18" target="_blank" rel="noopener"><span>💻 GitHub</span></a>
-          </div>
-        </div>
-        <div class="card section-card">
-          <h3>Keahlian</h3>
-          <div class="skills">
-            <div class="chip">HTML</div>
-            <div class="chip">CSS</div>
-            <div class="chip">JavaScript</div>
-            <div class="chip">Python</div>
-            <div class="chip">UI/UX</div>
-          </div>
-        </div>
-        <div class="card section-card" id="about">
-          <h3>Tentang Saya</h3>
-          <p>Saya adalah pengembang yang suka menyelesaikan masalah dengan antarmuka sederhana dan pengalaman pengguna yang baik. Selalu belajar teknologi baru dan memperbaiki alur kerja.</p>
-        </div>
-      </section>
-      <aside class="profile">
-        <div class="avatar">
-          <img src="asset/Raka.jpg" alt="Raka Avatar" loading="lazy">
-        </div>
-        <div class="card">
-          <div class="label">Lokasi</div>
-          <div class="value">Jakarta, Indonesia</div>
-        </div>
-        <div class="card">
-          <div class="label">Kontak</div>
-          <div class="value" style="cursor:pointer" title="Klik untuk copy">mukiyi3747@gmail.com</div>
-        </div>
-      </aside>
-    </main>
-    <section id="projects" style="margin-bottom:72px">
-      <h2 class="section-title">Proyek</h2>
-      <div class="project-slider-container">
-        <div class="project-list" id="projectSlider">
-          <a class="project" href="https://github.com/RakaAmar18/Pembuatan-Surat-Berharga.git" target="_blank" rel="noopener">
-            <img class="project-image" src="asset/Ktp-Sim.jpg" alt="Pembuatan Surat Berharga" loading="lazy">
-            <div class="project-content">
-              <h3>Pembuatan Surat Berharga</h3>
-              <p>Sistem manajemen permintaan dokumen SIM/KTP dengan dashboard admin dan proses pengiriman.</p>
-            </div>
-          </a>
-          <a class="project" href="https://github.com/RakaAmar18/secretcode.git" target="_blank" rel="noopener">
-            <img class="project-image" src="asset/Stealthtext.jpg" alt="StealthText" loading="lazy">
-            <div class="project-content">
-              <h3>StealthText</h3>
-              <p>Aplikasi enkripsi dan dekripsi teks rahasia berbasis web dengan antarmuka minimalis dan modern.</p>
-            </div>
-          </a>
-          <a class="project" href="https://github.com/RakaAmar18/Portfolio.git" target="_blank" rel="noopener">
-            <img class="project-image" src="asset/Portfolio.jpg" alt="Portfolio" loading="lazy">
-            <div class="project-content">
-              <h3>Portfolio</h3>
-              <p>Situs portofolio pribadi responsif yang menampilkan proyek, keahlian, dan kontak dengan desain modern.</p>
-            </div>
-          </a>
-        </div>
-        <div class="slider-nav">
-          <button class="slider-btn" id="prevBtn" aria-label="Previous">‹</button>
-          <div class="slider-dots" id="sliderDots"></div>
-          <button class="slider-btn" id="nextBtn" aria-label="Next">›</button>
-        </div>
-      </div>
-    </section>
-    <section id="contact">
-      <div class="card">
-        <h2 class="section-title">Kontak</h2>
-        <p>Ingin bekerja sama atau menanyakan sesuatu? Kirim pesan lewat form ini:</p>
-        <form id="contactForm">
-          <input id="nama" placeholder="Nama" required/>
-          <input id="email" type="email" placeholder="Email" required/>
-          <textarea id="pesan" placeholder="Pesan" required></textarea>
-          <button type="submit"><span>Kirim Pesan</span></button>
-          <div id="formMessage"></div>
-        </form>
-      </div>
-    </section>
-    <footer>© 2025 Raka Amar Taru Lintang</footer>
+    </div>
+  </header>
+  <main id="main"><section class="hero wrap" aria-labelledby="intro-title">
+  <div class="hero-copy">
+    <h1 id="intro-title">Halo, saya<br><span>Raka Amar.</span></h1>
+    <div class="role"><span>Frontend developer</span><span>Mobile apps</span><span>UI/UX</span></div>
+    <p>Saya Raka Amar Taru Lintang. Saya membuat antarmuka web, aplikasi mobile, dan aplikasi desktop dengan alur yang mudah dipahami dan tampilan yang berkarakter.</p>
+    <div class="hero-actions"><a class="button" href="#karya">Lihat karya pilihan <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="button secondary" href="#kontak">Hubungi saya <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></a></div>
+    <div class="hero-location"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Jakarta, Indonesia · CodeByRakaStudio</div>
   </div>
-  <div class="scroll-indicator" id="scrollIndicator" role="button" aria-label="Scroll to top" tabindex="0">
-    <span>↑</span>
+  <figure class="portrait-panel" style="margin:0">
+    <img src="/asset/github-avatar.webp" width="460" height="460" alt="Potret komik Raka Amar yang digunakan pada profil GitHub" fetchpriority="high">
+    <figcaption class="portrait-caption"><strong>Raka Amar</strong><span>Web. Mobile. Desktop.</span></figcaption>
+  </figure>
+</section>
+<div class="focus-strip wrap"><span><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 6-5 6 5 6m10-12 5 6-5 6m-3-15-4 18"/></svg>Antarmuka web</span><span><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg>Aplikasi mobile</span><span><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 8h18M10 8v13"/></svg>Desain UI/UX</span><span><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H5v20h14V7l-5-5Zm0 0v5h5M8 11h8M8 15h8M8 18h5"/></svg>Aplikasi desktop</span></div>
+<section class="section wrap" id="karya" aria-labelledby="work-title">
+  <div class="section-heading"><div><h2 id="work-title">Karya pilihan</h2><p>Pendidikan, komunitas, dan game. Tiga proyek dengan kebutuhan dan pengalaman yang berbeda.</p></div><a class="text-link" href="/labs/">Semua proyek <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  <div class="project-grid featured-grid"><article class="project-card" id="vclass" data-project data-category="Pendidikan" data-search="v-class pendidikan materi, tugas, kuis, dan ujian untuk sekolah. satu ekosistem pembelajaran, dengan v-class examhub untuk desktop. web desktop postgresql">
+    <div class="project-art art-class" aria-hidden="true"><span class="art-heading">V-Class</span><span class="art-caption">Pembelajaran digital</span><svg class="icon art-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5c-3-2-6-2-10-1v15c4-1 7-1 10 1m0-15c3-2 6-2 10-1v15c-4-1-7-1-10 1V5Z"/></svg></div>
+    <div class="project-content">
+      <div class="project-meta"><span>Pendidikan · Web &amp; desktop</span><span class="source-label"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10" width="14" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Source private</span></div>
+      <h3>V-Class</h3>
+      <p>Materi, tugas, kuis, dan ujian untuk sekolah. Satu ekosistem pembelajaran, dengan V-Class ExamHub untuk desktop.</p>
+      <ul class="tech-list" aria-label="Teknologi V-Class"><li>Web</li><li>Desktop</li><li>PostgreSQL</li></ul>
+      <a class="text-link" href="https://portfolio.vclass.co.id/" target="_blank" rel="noopener noreferrer">Lihat showcase V-Class <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg></a>
+    </div>
+  </article><article class="project-card" id="jaga-anabul" data-project data-category="Komunitas" data-search="jaga anabul komunitas platform kampanye donasi untuk shelter dan komunitas penyelamat hewan. menghubungkan donatur dengan pengelola organisasi. react laravel postgresql">
+    <div class="project-art art-anabul" aria-hidden="true"><span class="art-heading">Jaga Anabul</span><span class="art-caption">Donasi & komunitas</span><svg class="icon art-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 5a5 5 0 0 0-8 1 5 5 0 0 0-8-1c-3 3-1 6 1 8l7 7 7-7c2-2 4-5 1-8Z"/></svg></div>
+    <div class="project-content">
+      <div class="project-meta"><span>Komunitas · Web</span><span class="source-label"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10" width="14" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Source private</span></div>
+      <h3>Jaga Anabul</h3>
+      <p>Platform kampanye donasi untuk shelter dan komunitas penyelamat hewan. Menghubungkan donatur dengan pengelola organisasi.</p>
+      <ul class="tech-list" aria-label="Teknologi Jaga Anabul"><li>React</li><li>Laravel</li><li>PostgreSQL</li></ul>
+      <a class="text-link" href="/labs/#jaga-anabul">Tentang Jaga Anabul <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </article><article class="project-card" id="siasat-kata" data-project data-category="Game" data-search="siasat kata game game pesta deduksi sosial. satu ponsel digunakan bergiliran, kata rahasia dibagikan, lalu pemain berdiskusi mencari penyusup. react native expo typescript">
+    <div class="project-art art-siasat" aria-hidden="true"><span class="art-heading">Siasat Kata</span><span class="art-caption">Pesta penyusup</span><svg class="icon art-symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></svg></div>
+    <div class="project-content">
+      <div class="project-meta"><span>Game · Android</span><span class="source-label"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10" width="14" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Source private</span></div>
+      <h3>Siasat Kata</h3>
+      <p>Game pesta deduksi sosial. Satu ponsel digunakan bergiliran, kata rahasia dibagikan, lalu pemain berdiskusi mencari penyusup.</p>
+      <ul class="tech-list" aria-label="Teknologi Siasat Kata"><li>React Native</li><li>Expo</li><li>TypeScript</li></ul>
+      <a class="text-link" href="/labs/#siasat-kata">Tentang Siasat Kata <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </article></div>
+</section>
+<section class="section about-section" id="tentang" aria-labelledby="about-title">
+  <div class="wrap about-layout">
+    <div class="about-copy"><h2 id="about-title">Di balik layarnya</h2><p>Saya suka mengerjakan produk yang punya kegunaan jelas. Dari pembelajaran digital sampai permainan bersama teman, saya memperhatikan alur, keterbacaan, dan detail interaksi.</p><p>Teknologi saya pilih sesuai kebutuhan proyek. Yang penting, hasilnya nyaman digunakan dan kodenya tetap mudah dirawat.</p><a class="text-link" href="/cv.html">Lihat CV <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <dl class="skills-list"><div class="skill-group"><dt>Web & antarmuka</dt><dd>HTML · CSS · JavaScript · TypeScript · React · UI/UX</dd></div><div class="skill-group"><dt>Mobile & desktop</dt><dd>React Native · Expo · Python · Tkinter</dd></div><div class="skill-group"><dt>Backend & data</dt><dd>Laravel · PostgreSQL · MySQL</dd></div><div class="skill-group"><dt>Alur kerja</dt><dd>Git · GitHub · Pengembangan dan pengujian antarmuka</dd></div></dl>
   </div>
-  <script src="src/po.js"></script>
+</section>
+<section class="section wrap labs-section" aria-label="Jelajahi labs">
+  <article class="labs-door"><h2>Project Labs</h2><p>Jelajahi katalog proyek berdasarkan bidang dan teknologi. Dari aplikasi yang digunakan sehari-hari hingga eksperimen kecil.</p><a class="button secondary" href="/labs/">Jelajahi proyek <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article>
+  <article class="labs-door"><h2>Portfolio Labs</h2><p>Showcase khusus untuk mengenal sebuah produk lebih dekat, terpisah dari katalog proyek.</p><a class="button secondary" href="/portfolio-labs/">Lihat showcase <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article>
+</section>
+<section class="github-section wrap" id="github" aria-label="Profil GitHub RakaAmar18">
+  <div class="github-panel"><div class="github-identity"><img class="github-avatar" src="/asset/github-avatar.webp" alt="Avatar GitHub RakaAmar18" width="82" height="82" loading="lazy"><div><h2>CodeByRakaStudio</h2><a class="github-handle" href="https://github.com/RakaAmar18" target="_blank" rel="noopener noreferrer"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 19c-4 1-4-2-6-2m12 5v-4c0-1 .1-2-1-3 4-.4 7-2 7-6a5 5 0 0 0-1-3c.2-1 .3-2-.2-3-2 0-3 1-4 2a13 13 0 0 0-7 0C8 4 7 3 5 3c-.5 1-.4 2-.2 3a5 5 0 0 0-1 3c0 4 3 5.6 7 6-1 1-1 2-1 3v4"/></svg>@RakaAmar18</a><p>Repositori publik, catatan proyek, dan aktivitas saya di GitHub.</p></div></div><a class="button secondary" href="https://github.com/RakaAmar18" target="_blank" rel="noopener noreferrer">Kunjungi profil GitHub <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg></a></div>
+</section>
+<section class="contact-section" id="kontak" aria-labelledby="contact-title"><div class="wrap contact-layout"><div><h2 id="contact-title">Punya proyek<br>untuk dibahas?</h2><p>Ceritakan idenya, kebutuhan produknya, atau bagian yang ingin kita kerjakan bersama.</p></div><div class="contact-actions"><a class="contact-email" href="mailto:mukiyi3747@gmail.com">mukiyi3747@gmail.com</a><a class="button secondary" href="mailto:mukiyi3747@gmail.com?subject=Diskusi%20proyek">Buka aplikasi email <svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></a></div></div></section></main>
+  <footer class="site-footer wrap"><p>© 2026 Raka Amar Taru Lintang</p><p>CodeByRakaStudio · <a href="https://github.com/RakaAmar18" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="mailto:mukiyi3747@gmail.com">Email</a></p></footer>
 </body>
 </html>

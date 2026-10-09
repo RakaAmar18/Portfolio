@@ -1,0 +1,77 @@
+[
+  {
+    "id": "vclass",
+    "name": "V-Class",
+    "category": "Pendidikan",
+    "format": "Web & desktop",
+    "description": "Materi, tugas, kuis, dan ujian untuk sekolah. Satu ekosistem pembelajaran, dengan V-Class ExamHub untuk desktop.",
+    "tech": ["Web", "Desktop", "PostgreSQL"],
+    "source": "private",
+    "featured": true,
+    "showcase": {
+      "title": "Virtual Class",
+      "description": "Kenali platform pembelajaran dan ujian untuk sekolah, dari konteks produknya sampai pengalaman yang dirancang.",
+      "url": "https://portfolio.vclass.co.id/"
+    },
+    "art": "class"
+  },
+  {
+    "id": "jaga-anabul",
+    "name": "Jaga Anabul",
+    "category": "Komunitas",
+    "format": "Web",
+    "description": "Platform kampanye donasi untuk shelter dan komunitas penyelamat hewan. Menghubungkan donatur dengan pengelola organisasi.",
+    "tech": ["React", "Laravel", "PostgreSQL"],
+    "source": "private",
+    "featured": true,
+    "showcase": {
+      "title": "Jaga Anabul",
+      "description": "Showcase akan memperkenalkan platform kampanye donasi dan pengalaman yang dirancang untuk donatur serta pengelola shelter."
+    },
+    "art": "anabul"
+  },
+  {
+    "id": "siasat-kata",
+    "name": "Siasat Kata",
+    "category": "Game",
+    "format": "Android",
+    "description": "Game pesta deduksi sosial. Satu ponsel digunakan bergiliran, kata rahasia dibagikan, lalu pemain berdiskusi mencari penyusup.",
+    "tech": ["React Native", "Expo", "TypeScript"],
+    "source": "private",
+    "featured": true,
+    "art": "siasat"
+  },
+  {
+    "id": "stealthtext",
+    "name": "StealthText",
+    "category": "Web",
+    "format": "Web",
+    "description": "Eksperimen enkripsi dan dekripsi teks melalui antarmuka web yang sederhana.",
+    "tech": ["JavaScript", "HTML", "CSS"],
+    "source": "public",
+    "url": "https://github.com/RakaAmar18/secretcode",
+    "art": "text"
+  },
+  {
+    "id": "document-service",
+    "name": "Document Service System",
+    "category": "Desktop",
+    "format": "Desktop",
+    "description": "Proyek bersama tim untuk mengelola permohonan dokumen, dashboard admin, dan proses pengiriman.",
+    "tech": ["Python", "Tkinter", "MySQL"],
+    "source": "public",
+    "url": "https://github.com/RakaAmar18/Pembuatan-Surat-Berharga",
+    "art": "docs"
+  },
+  {
+    "id": "portfolio",
+    "name": "Raka Amar Portfolio",
+    "category": "Web",
+    "format": "Web",
+    "description": "Rumah digital untuk karya, catatan teknologi, dan showcase proyek. Dibangun dengan HTML, CSS, dan JavaScript.",
+    "tech": ["HTML", "CSS", "JavaScript"],
+    "source": "public",
+    "url": "https://github.com/RakaAmar18/Portfolio",
+    "art": "portfolio"
+  }
+]

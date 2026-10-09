@@ -1,0 +1,14 @@
+{
+  "name": "rakaamar-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "check": "node --check scripts/build.mjs && node --check scripts/serve.mjs && node --check src/po.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
