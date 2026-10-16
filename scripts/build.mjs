@@ -114,7 +114,7 @@ function header(active) {
 }
 
 function footer() {
-  return `<footer class="site-footer wrap"><p>© ${new Date().getUTCFullYear()} Raka Amar Taru Lintang</p><p>CodeByRakaStudio · <a href="https://github.com/RakaAmar18" ${external}>GitHub</a> · <a href="mailto:mukiyi3747@gmail.com">Email</a></p></footer>`;
+  return `<footer class="site-footer wrap"><p>© ${new Date().getUTCFullYear()} Raka Amar Taru Lintang</p><p>CodeByRakaStudio · <a href="https://github.com/RakaAmar18" ${external}>GitHub</a> · <a href="mailto:codebyraka.studio.id@gmail.com">Email</a></p></footer>`;
 }
 
 function page({
@@ -188,7 +188,7 @@ const home = `<section class="hero wrap" aria-labelledby="intro-title">
 <section class="github-section wrap" id="github" aria-label="Profil GitHub RakaAmar18">
   <div class="github-panel"><div class="github-identity"><img class="github-avatar" src="/asset/github-avatar.webp" alt="Avatar GitHub RakaAmar18" width="82" height="82" loading="lazy"><div><h2>CodeByRakaStudio</h2><a class="github-handle" href="https://github.com/RakaAmar18" ${external}>${icon("github")}@RakaAmar18</a><p>Repositori publik, catatan proyek, dan aktivitas saya di GitHub.</p></div></div><a class="button secondary" href="https://github.com/RakaAmar18" ${external}>Kunjungi profil GitHub ${icon("external")}</a></div>
 </section>
-<section class="contact-section" id="kontak" aria-labelledby="contact-title"><div class="wrap contact-layout"><div><h2 id="contact-title">Punya proyek<br>untuk dibahas?</h2><p>Ceritakan idenya, kebutuhan produknya, atau bagian yang ingin kita kerjakan bersama.</p></div><div class="contact-actions"><a class="contact-email" href="mailto:mukiyi3747@gmail.com">mukiyi3747@gmail.com</a><a class="button secondary" href="mailto:mukiyi3747@gmail.com?subject=Diskusi%20proyek">Buka aplikasi email ${icon("mail")}</a></div></div></section>`;
+<section class="contact-section" id="kontak" aria-labelledby="contact-title"><div class="wrap contact-layout"><div><h2 id="contact-title">Punya proyek<br>untuk dibahas?</h2><p>Ceritakan idenya, kebutuhan produknya, atau bagian yang ingin kita kerjakan bersama.</p></div><div class="contact-actions"><a class="contact-email" href="mailto:codebyraka.studio.id@gmail.com">codebyraka.studio.id@gmail.com</a><a class="button secondary" href="mailto:codebyraka.studio.id@gmail.com?subject=Diskusi%20proyek">Buka aplikasi email ${icon("mail")}</a></div></div></section>`;
 
 const categories = [
   "Semua",
