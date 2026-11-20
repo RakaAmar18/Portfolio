@@ -135,11 +135,11 @@ function page({
   <meta name="description" content="${escape(description)}">
   <meta name="theme-color" content="#fffdf5">
   <title>${escape(title)}</title>
-  <link rel="canonical" href="https://rakaamar.site${path}">
+  <link rel="canonical" href="https://rakaamar.my.id${path}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="${escape(title)}">
   <meta property="og:description" content="${escape(description)}">
-  <meta property="og:url" content="https://rakaamar.site${path}">
+  <meta property="og:url" content="https://rakaamar.my.id${path}">
   <meta property="og:site_name" content="CodeByRakaStudio">
   <link rel="icon" href="/asset/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/asset/fonts/bangers.woff2" as="font" type="font/woff2" crossorigin>
