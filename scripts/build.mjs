@@ -24,6 +24,8 @@ const assetVersion = async (path) =>
     .slice(0, 12);
 const styleVersion = await assetVersion("src/Style_po.css");
 const scriptVersion = await assetVersion("src/po.js");
+const cvVersion = await assetVersion("asset/RakaAmar_CV.pdf");
+const cvHref = `/asset/RakaAmar_CV.pdf?v=${cvVersion}`;
 const escape = (value) =>
   String(value).replace(
     /[&<>"']/g,
@@ -177,7 +179,7 @@ const home = `<section class="hero wrap" aria-labelledby="intro-title">
 </section>
 <section class="section about-section" id="tentang" aria-labelledby="about-title">
   <div class="wrap about-layout">
-    <div class="about-copy"><h2 id="about-title">Tentang Raka</h2><p>Proyek saya bergerak di beberapa bidang: pembelajaran digital, komunitas penyelamat hewan, dan permainan bersama teman.</p><p>Saya mengerjakan antarmuka web dan mobile, serta aplikasi desktop dengan Python. Teknologi dipilih sesuai kebutuhan produknya.</p><a class="text-link" href="/cv.html">Lihat CV ${icon("arrow")}</a></div>
+    <div class="about-copy"><h2 id="about-title">Tentang Raka</h2><p>Proyek saya bergerak di beberapa bidang: pembelajaran digital, komunitas penyelamat hewan, dan permainan bersama teman.</p><p>Saya mengerjakan antarmuka web dan mobile, serta aplikasi desktop dengan Python. Teknologi dipilih sesuai kebutuhan produknya.</p><a class="text-link" href="${cvHref}" ${external}>Lihat CV ${icon("external")}</a></div>
     <dl class="skills-list"><div class="skill-group"><dt>Web & antarmuka</dt><dd>HTML · CSS · JavaScript · TypeScript · React · UI/UX</dd></div><div class="skill-group"><dt>Mobile & desktop</dt><dd>React Native · Expo · Python · Tkinter</dd></div><div class="skill-group"><dt>Backend & data</dt><dd>Laravel · PostgreSQL · MySQL</dd></div><div class="skill-group"><dt>Alur kerja</dt><dd>Git · GitHub · Pengembangan dan pengujian antarmuka</dd></div></dl>
   </div>
 </section>
@@ -250,6 +252,33 @@ for (const [path, settings] of pages) {
   await writeFile(destination, page(settings), "utf8");
   console.log(`Built ${path}`);
 }
+const cvRedirectPage = `<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV | Raka Amar Taru Lintang</title>
+  <meta http-equiv="refresh" content="0; url=${cvHref}">
+  <link rel="canonical" href="https://rakaamar.my.id/asset/RakaAmar_CV.pdf">
+  <link rel="icon" href="/asset/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/Style_po.css?v=${styleVersion}">
+</head>
+<body>
+  <main class="wrap" style="padding-block: 64px;">
+    <h1>CV Raka Amar Taru Lintang</h1>
+    <p style="margin-top: 16px;">Mengarahkan ke dokumen CV terbaru...</p>
+    <div class="hero-actions" style="margin-top: 24px;">
+      <a class="button" href="${cvHref}">Buka CV (PDF)</a>
+      <a class="button secondary" href="${cvHref}" download="RakaAmar_CV.pdf">Unduh CV</a>
+      <a class="text-link" href="/">Kembali ke Portfolio</a>
+    </div>
+  </main>
+  <script>window.location.replace(${JSON.stringify(cvHref)});</script>
+</body>
+</html>
+`;
+await writeFile(resolve(root, "cv.html"), cvRedirectPage, "utf8");
+console.log("Built cv.html");
 console.log(
   `Built ${pages.length} routes from ${projects.length} public-safe project summaries.`,
 );
