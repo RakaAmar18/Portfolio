@@ -861,6 +861,96 @@ h3 {
   color: var(--muted);
   line-height: 1.75;
 }
+.cert-section {
+  padding-bottom: 0;
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.cert-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+  transition:
+    transform 0.18s var(--ease-comic),
+    box-shadow 0.18s var(--ease-comic);
+}
+.cert-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.cert-ribbon {
+  height: 10px;
+  border-bottom: 2px solid var(--ink);
+  background-image: radial-gradient(rgba(30, 30, 30, 0.18) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+.cert-yellow .cert-ribbon {
+  background-color: var(--yellow);
+}
+.cert-cyan .cert-ribbon {
+  background-color: var(--cyan);
+}
+.cert-pink .cert-ribbon {
+  background-color: var(--pink);
+}
+.cert-blue .cert-ribbon {
+  background-color: #9cc3fb;
+}
+.cert-body {
+  flex: 1;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cert-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cert-date {
+  padding: 3px 9px;
+  background: var(--caption);
+  border: 1.5px solid var(--ink);
+  font-size: 11px;
+  font-weight: 800;
+}
+.cert-no {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.cert-card h3 {
+  font-size: 20px;
+}
+.cert-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.cert-actions {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.cert-btn {
+  min-height: 42px;
+  padding: 8px 14px;
+  font-size: 12px;
+}
 .labs-section {
   display: flex;
   flex-direction: column;
@@ -1503,7 +1593,8 @@ html.comic-motion [data-panel-visible] {
     grid-template-columns: 1fr;
     gap: 35px;
   }
-  .exp-grid {
+  .exp-grid,
+  .cert-grid {
     grid-template-columns: 1fr;
   }
   .github-panel {
@@ -1686,6 +1777,12 @@ html.comic-motion [data-panel-visible] {
   }
   .skills-list {
     grid-template-columns: 1fr;
+  }
+  .cert-body {
+    padding: 18px;
+  }
+  .cert-card h3 {
+    font-size: 18px;
   }
   .labs-door {
     grid-template-columns: 1fr;

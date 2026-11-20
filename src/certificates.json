@@ -1,0 +1,70 @@
+[
+  {
+    "id": "analisis-spesifikasi-perangkat-lunak",
+    "title": "Analisis dan Spesifikasi Kebutuhan Perangkat Lunak",
+    "subtitle": "Software Requirements Analysis and Specification",
+    "issuer": "Universitas Gunadarma",
+    "number": "NO. 860759",
+    "date": "September 2026",
+    "topics": [
+      "SRS Documentation",
+      "Requirements Review & UAT",
+      "Cloud Services",
+      "Information Classification"
+    ],
+    "file": "asset/certificates/analisis-spesifikasi-perangkat-lunak.pdf",
+    "downloadName": "Sertifikat-Analisis-Spesifikasi-Perangkat-Lunak-RakaAmar.pdf",
+    "accent": "yellow"
+  },
+  {
+    "id": "basis-data-pemula",
+    "title": "Basis Data untuk Tingkat Pemula",
+    "subtitle": "Database for Beginner",
+    "issuer": "Universitas Gunadarma",
+    "number": "NO. 709010",
+    "date": "Februari 2025",
+    "topics": [
+      "SQL Server",
+      "Subquery & View",
+      "T-SQL & Stored Procedure",
+      "Backup & Recovery"
+    ],
+    "file": "asset/certificates/basis-data-pemula.pdf",
+    "downloadName": "Sertifikat-Basis-Data-Pemula-RakaAmar.pdf",
+    "accent": "cyan"
+  },
+  {
+    "id": "pemrograman-web-pemula",
+    "title": "Pemrograman Web untuk Tingkat Pemula",
+    "subtitle": "Web Programming for Beginner",
+    "issuer": "Universitas Gunadarma",
+    "number": "NO. 263388",
+    "date": "Agustus 2024",
+    "topics": [
+      "Go",
+      "PHP & Database",
+      "C# & .NET Framework",
+      "ASP.NET State"
+    ],
+    "file": "asset/certificates/pemrograman-web-pemula.pdf",
+    "downloadName": "Sertifikat-Pemrograman-Web-Pemula-RakaAmar.pdf",
+    "accent": "pink"
+  },
+  {
+    "id": "dasar-pemrograman-jaringan",
+    "title": "Dasar Pemrograman Jaringan",
+    "subtitle": "Fundamental Networking",
+    "issuer": "Universitas Gunadarma",
+    "number": "NO. 910815",
+    "date": "Februari 2024",
+    "topics": [
+      "OSI & TCP/IP",
+      "Packet Tracer & LAN",
+      "Cisco",
+      "Mikrotik & Juniper"
+    ],
+    "file": "asset/certificates/dasar-pemrograman-jaringan.pdf",
+    "downloadName": "Sertifikat-Dasar-Pemrograman-Jaringan-RakaAmar.pdf",
+    "accent": "blue"
+  }
+]

@@ -17,6 +17,9 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const projects = JSON.parse(
   await readFile(resolve(root, "src/projects.json"), "utf8"),
 );
+const certificates = JSON.parse(
+  await readFile(resolve(root, "src/certificates.json"), "utf8"),
+);
 const assetVersion = async (path) =>
   createHash("sha256")
     .update(await readFile(resolve(root, path)))
@@ -26,6 +29,12 @@ const styleVersion = await assetVersion("src/Style_po.css");
 const scriptVersion = await assetVersion("src/po.js");
 const cvVersion = await assetVersion("asset/RakaAmar_CV.pdf");
 const cvHref = `/asset/RakaAmar_CV.pdf?v=${cvVersion}`;
+const versionedCertificates = await Promise.all(
+  certificates.map(async (cert) => ({
+    ...cert,
+    href: `/${cert.file}?v=${await assetVersion(cert.file)}`,
+  })),
+);
 const escape = (value) =>
   String(value).replace(
     /[&<>"']/g,
@@ -190,6 +199,19 @@ function card(project, homepage = false) {
   </article>`;
 }
 
+function certCard(cert) {
+  return `<article class="cert-card cert-${escape(cert.accent)}" id="cert-${escape(cert.id)}" data-panel>
+    <div class="cert-ribbon" aria-hidden="true"></div>
+    <div class="cert-body">
+      <div class="cert-meta"><span class="cert-date">${escape(cert.date)}</span><span class="cert-no">${escape(cert.number)}</span></div>
+      <h3>${escape(cert.title)}</h3>
+      <p class="cert-subtitle">${escape(cert.subtitle)} · ${escape(cert.issuer)}</p>
+      <ul class="tech-list" aria-label="Materi ${escape(cert.title)}">${cert.topics.map((topic) => `<li>${escape(topic)}</li>`).join("")}</ul>
+      <div class="cert-actions"><a class="button secondary cert-btn" href="${escape(cert.href)}" ${external}>Lihat sertifikat ${icon("external")}</a><a class="text-link" href="${escape(cert.href)}" download="${escape(cert.downloadName)}">Unduh PDF ${icon("download")}</a></div>
+    </div>
+  </article>`;
+}
+
 function header(active) {
   const nav = [
     ["/", "Portfolio", "home"],
@@ -288,6 +310,10 @@ const home = `<section class="hero wrap" aria-labelledby="intro-title">
       </div>
     </div>
   </div>
+</section>
+<section class="section wrap cert-section" id="sertifikat" aria-labelledby="cert-title">
+  <div class="section-heading"><div><p class="comic-caption">ARC 03 · SERTIFIKASI</p><h2 id="cert-title">Sertifikat pelatihan</h2><p>Pelatihan resmi Universitas Gunadarma yang ditandatangani secara elektronik, lengkap dengan transkrip materi.</p></div></div>
+  <div class="cert-grid">${versionedCertificates.map(certCard).join("")}</div>
 </section>
 <section class="section wrap labs-section" aria-label="Jelajahi labs">
   <p class="comic-caption">DIREKTORI · LABS</p>
