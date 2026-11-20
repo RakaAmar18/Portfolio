@@ -203,30 +203,38 @@ h3 {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 14px;
 }
 .site-nav a {
-  min-height: 44px;
-  display: flex;
+  min-height: 38px;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;
-  padding: 4px 2px;
-  border-bottom: 3px solid transparent;
-  transition: border-color 0.14s, transform 0.14s var(--ease-comic);
+  padding: 6px 12px;
+  border: 2px solid transparent;
+  transition:
+    background-color 0.14s,
+    border-color 0.14s,
+    box-shadow 0.14s var(--ease-comic),
+    transform 0.14s var(--ease-comic);
 }
 .site-nav a:hover {
-  border-color: var(--yellow);
-  transform: translateY(-1px);
+  background: var(--caption);
+  border-color: var(--ink);
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 var(--ink);
 }
 .site-nav a[aria-current="page"] {
+  background: var(--yellow);
   border-color: var(--ink);
-  background: linear-gradient(transparent 62%, var(--yellow) 62%);
+  box-shadow: var(--shadow-sm);
+  font-weight: 800;
 }
 .site-nav .nav-contact {
-  margin-left: 16px;
+  margin-left: 8px;
 }
 .menu-toggle {
   display: none;
@@ -1332,7 +1340,7 @@ html.comic-motion [data-panel-visible] {
     max-width: 185px;
   }
   .site-nav {
-    gap: 20px;
+    gap: 10px;
   }
   .site-nav .nav-contact {
     margin-left: 0;
@@ -1413,6 +1421,7 @@ html.comic-motion [data-panel-visible] {
   .site-nav a[aria-current="page"] {
     background: var(--yellow);
     border-color: var(--ink);
+    box-shadow: var(--shadow-sm);
   }
   .hero {
     min-height: 700px;
